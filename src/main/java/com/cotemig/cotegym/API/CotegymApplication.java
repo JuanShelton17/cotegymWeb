@@ -1,4 +1,4 @@
-package com.cotemig.cotegym;
+package com.cotemig.cotegym.API;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
