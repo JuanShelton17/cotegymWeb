@@ -14,6 +14,8 @@
 	<name>cotegym</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
+		<sonar.organization>juanshelton17</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
