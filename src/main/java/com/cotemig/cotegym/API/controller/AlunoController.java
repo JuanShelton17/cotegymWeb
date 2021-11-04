@@ -38,5 +38,60 @@ public class AlunoController {
 
 		return "redirect:/readAlunos";
 	}
+	
+	@RequestMapping(value = "/deleteAluno", method = RequestMethod.GET)
+	public ModelAndView deleteAluno(Integer id) {
+
+		return new ModelAndView("deleteAluno", "aluno", alunoService.getAlunoById(id).get());
+	}
+
+	@RequestMapping(value = "/deleteAluno", method = RequestMethod.POST)
+	public String submitDeleteAluno(@Validated @ModelAttribute("aluno") Aluno aluno, BindingResult result, ModelMap model)
+	{
+
+		if (result.hasErrors()) {
+			return "error";
+		}
+
+		alunoService.deleteAlunoById(aluno.getId());
+
+		return "redirect:/readAlunos";
+
+	}
+
+	@RequestMapping(value = "/updateAluno", method = RequestMethod.GET)
+	public ModelAndView updateAluno(Integer id) {
+
+		return new ModelAndView("updateAluno", "aluno", alunoService.getAlunoById(id).get());
+
+	}
+
+	@RequestMapping(value = "/updateAluno", method = RequestMethod.POST)
+	public String submitUpdateAluno(@Validated @ModelAttribute("aluno") Aluno aluno, BindingResult result, ModelMap model) {
+
+		if (result.hasErrors()) {
+			return "error";
+		}
+
+		alunoService.updateAluno(aluno);
+
+		return "redirect:/readAlunos";
+	}
+
+	@RequestMapping(value = "/readAlunos", method = RequestMethod.GET)
+	public ModelAndView readAlunos() {
+
+		ModelAndView mav = new ModelAndView("readAlunos");
+		mav.addObject("alunos", alunoService.getAllAlunos());
+		return mav;
+	}
+
+	@RequestMapping(value = "/readAluno", method = RequestMethod.GET)
+	public ModelAndView readAluno(Integer id) {
+
+		ModelAndView mav = new ModelAndView("readAluno");
+		mav.addObject("alunos", alunoService.getAlunoById(id));
+		return mav;
+	}
 
 }
