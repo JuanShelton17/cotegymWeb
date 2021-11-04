@@ -1,0 +1,40 @@
+<html>
+	<head>
+	    <title>Atualizar Professor</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<style>
+			body{background-color: #fff8dc;margin: 0;}
+			form{display: block; text-align: center; margin: 40px auto; width: 20%;} 
+			form > input, form > select{display: block;width: 100%;margin: 8px 0;} 
+			.options {text-align: center; margin: 15px 0; position: relative;}
+			.options input, .options a {padding: 5px 20px;background: deepskyblue;border-radius: 15px;color: #fff;text-decoration: none;font-size: 20px;margin: 10px;display: inline-block;border: 0;}
+		</style>
+	</head>
+	<body>
+		<form action="/updateProfessor" method="POST" modelAttribute="professor">
+		
+			ID:
+  			<input type="text" name="id" th:value="${professor.id}" readOnly="true">
+  			
+  			Nome:
+  			<input type="text" name="nome" th:value="${professor.nome}">
+  			
+  			CPF:
+  			<input type="text" name="cpf" th:value="${professor.cpf}">
+  			
+  			Idade:
+  			<input type="text" name="idade" th:value="${professor.idade}">
+  			
+  			Modalidade:
+    <select name="modalidade_id">
+  				<option th:each="modalidade : ${modalidades}" th:value="${modalidade.id}" th:text="${modalidade.nome}"></option>
+			</select>
+			
+			<div class="options">
+				<input type="submit" value="Atualizar">
+				<input type="button" value="Voltar" onClick="history.go(-1)">
+			</div>
+		</form>
+		
+	</body>
+</html>
