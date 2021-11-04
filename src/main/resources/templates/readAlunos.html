@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Ver todos Alunos</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <style>
+			body{background-color: #fff8dc;margin: 0;}
+			table{width: 100%;}
+			table, th, td {border: 1px solid black;border-collapse: collapse;text-align: center;}
+			.options {text-align: center; margin: 40px; position: relative;}
+			.options a {padding: 20px;background: deepskyblue;border-radius: 15px;color: #fff;text-decoration: none;font-size: 20px;margin: 10px;}
+		</style>
+	</head>
+	<body>
+		<div class="options">
+			<a href="insertAluno">Inserir Alunos</a>
+			<a href="painelAdm">Dashboard Administrativo</a> 
+		</div>
+		<table>
+			<tr>
+			
+			    <th>ID</td>
+			    <th>Nome</td>
+			    <th>Idade</td>
+			    <th>CPF</td>
+			    <th>Excluir?</td>
+			    <th>Alterar?</td>
+			</tr>
+			<tr th:each="aluno : ${alunos}">
+			    <td th:text="${aluno.id}"></td>
+			    <td th:text="${aluno.nome}"></td>
+			    <td th:text="${aluno.idade}"></td>
+			    <td th:text="${aluno.cpf}"></td>
+			   
+			    
+			    <td><a th:href="@{deleteAluno(id=${aluno.id})}">Deletar</a></td>
+			    <td><a th:href="@{updateAluno(id=${aluno.id})}">Alterar</a></td>
+			</tr>
+		</table>
+		
+	</body>
+</html>
