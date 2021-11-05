@@ -49,5 +49,4 @@ public class AlunoRestController {
 	public void updateAluno(@RequestBody Aluno aluno) {
 		alunoService.insertAluno(aluno);
 	}
-
 }
