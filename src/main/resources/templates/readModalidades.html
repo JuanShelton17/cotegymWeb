@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>Modalidades</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <style>
+			body{background-color: #fff8dc;margin: 0;}
+			table{width: 100%;}
+			table, th, td {border: 1px solid black;border-collapse: collapse;text-align: center;}
+			.options {text-align: center; margin: 40px; position: relative;}
+			.options a {padding: 20px;background: deepskyblue;border-radius: 15px;color: #fff;text-decoration: none;font-size: 20px;margin: 10px;}
+		</style>
+	</head>
+	<body>
+		<div class="options">
+			<a href="insertModalidade">Inserir Modalidade</a>
+			<a href="painelAdm">Dashboard Administrativo</a> 
+		</div>
+		<table>
+			<tr>
+			
+			    <th>ID</td>
+			    <th>Nome</td>
+			    <th>Aerobico</td>
+			    <th>Excluir?</td>
+			    <th>Alterar?</td>
+			</tr>
+			<tr th:each="modalidade : ${modalidades}">
+			    <td th:text="${modalidade.id}"></td>
+			    <td th:text="${modalidade.nome}"></td>
+			    <td th:text="${modalidade.aerobico}"></td>
+			   
+			    <td><a th:href="@{deleteModalidade(id=${modalidade.id})}">Deletar</a></td>
+			    <td><a th:href="@{updateModalidade(id=${modalidade.id})}">Alterar</a></td>
+			</tr>
+		</table>
+	</body>
+</html>
