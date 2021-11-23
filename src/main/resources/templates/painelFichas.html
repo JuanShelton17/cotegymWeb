@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>Gerenciamento de Fichas</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="css/main.css">
+	    <style>
+			body{background-color: #fff8dc;margin: 0;}
+			table{width: 100%;}
+			table, th, td {border: 1px solid black;border-collapse: collapse;text-align: center;}
+			.options {text-align: center; margin: 40px; position: relative;}
+			.options a {padding: 20px;background: deepskyblue;border-radius: 15px;color: #fff;text-decoration: none;font-size: 20px;margin: 10px;}
+		</style>
+	</head>
+	<body>
+		<div class="options">
+			<a href="insertFicha">Criar Ficha</a>
+			<a href="readExercicios">Criar Exercícios</a>
+			<a href="/">Página Inicial</a>
+		</div>
+		<div>
+			<table>
+				<tr>
+					<th>ID</td>
+					<th>Letra</td>
+					<th>Aluno</td>
+					<th>Professor</td>
+					<th>Visualizar</td>
+					<th>Excluir?</td>
+					<th>Alterar?</td>
+				</tr>
+				<tr th:each="ficha : ${fichas}">
+					<td th:text="${ficha.id}"></td>
+					<td th:text="${ficha.fichaLetra}"></td>
+					
+					<td th:each="aluno : ${alunos}"
+							th:if="${aluno.id} == ${ficha.aluno_id}"
+							th:text="${aluno.nome}">
+					  </td >
+					  
+					  <td th:each="professor : ${professores}"
+							th:if="${professor.id} == ${ficha.professor_id}"
+							th:text="${professor.nome}">
+					  </td >
+				   
+				   <td><a th:href="@{getFicha(id=${ficha.id})}">Visualizar</a></td>
+					<td><a th:href="@{deleteFicha(id=${ficha.id})}">Deletar</a></td>
+					<td><a th:href="@{updateFicha(id=${ficha.id})}">Alterar</a></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

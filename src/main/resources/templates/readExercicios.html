@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>Exercicios</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <style>
+			body{background-color: #fff8dc;margin: 0;}
+			table{width: 100%;}
+			table, th, td {border: 1px solid black;border-collapse: collapse;text-align: center;}
+			.options {text-align: center; margin: 40px; position: relative;}
+			.options a {padding: 20px;background: deepskyblue;border-radius: 15px;color: #fff;text-decoration: none;font-size: 20px;margin: 10px;}
+		</style>
+	</head>
+	<body>
+		<div class="options">
+			<a href="insertExercicio">Inserir Exercicio</a>
+			<a href="painelFichas">Dashboard Fichas</a> 
+		</div>
+		<table>
+			<tr>
+			
+			    <th>ID</td>
+			    <th>Nome</td>
+			    <th>Excluir?</td>
+			    <th>Alterar?</td>
+			</tr>
+			<tr th:each="exercicio : ${exercicios}">
+			    <td th:text="${exercicio.id}"></td>
+			    <td th:text="${exercicio.nome}"></td>
+			   
+			    <td><a th:href="@{deleteExercicio(id=${exercicio.id})}">Deletar</a></td>
+			    <td><a th:href="@{updateExercicio(id=${exercicio.id})}">Alterar</a></td>
+			</tr>
+		</table>
+	</body>
+</html>

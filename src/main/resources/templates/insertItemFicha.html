@@ -1,0 +1,39 @@
+<html>
+	<head>
+	    <title>Inserir Item Ficha</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<style>
+			body{background-color: #fff8dc;margin: 0;}
+			form{display: block; text-align: center; margin: 40px auto; width: 20%;} 
+			form > input, form > select{display: block;width: 100%;margin: 8px 0;} 
+			.options {text-align: center; margin: 15px 0; position: relative;}
+			.options input {padding: 5px 20px;background: deepskyblue;border-radius: 15px;color: #fff;text-decoration: none;font-size: 20px;margin: 10px;display: inline-block;border: 0;}
+		</style>
+	</head>
+	<body>
+		<form  th:action="@{/insertItemFicha}" method="POST" th:object="${itemFicha}">
+		
+		Exercício:
+    <select name="exercicio_id">
+  				<option th:each="exercicio : ${exercicios}" th:value="${exercicio.id}" th:text="${exercicio.nome}"></option>
+			</select>
+			
+  			Descrição:
+  			<input type="text" th:field="*{descricao}">
+  			
+  			Séries:
+  			<input type="text"  maxlength="2" th:field="*{serie}">
+  			
+  			Repetições:
+  			<input type="text"  maxlength="2" th:field="*{repeticao}">
+  			
+  			Descanso:
+  			<input type="text"  maxlength="2" th:field="*{descanso}">
+  		
+		<div class="options">
+			<input type="submit" value="Inserir">
+			<input type="button" value="Voltar" onClick="history.go(-1)">
+		</div>
+		</form>
+	</body>
+</html>
