@@ -1,0 +1,88 @@
+<html>
+	<head>
+	    <title>Atualizar Ficha</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<style>
+			body{background-color: #fff8dc;margin: 0;}
+			form{display: block; text-align: center; margin: 40px auto; width: 20%;} 
+			form > input, form > select{display: block;width: 100%;margin: 8px 0;} 
+			.options {text-align: center; margin: 15px 0; position: relative;}
+			.options input, .options a {padding: 5px 20px;background: deepskyblue;border-radius: 15px;color: #fff;text-decoration: none;font-size: 20px;margin: 10px;display: inline-block;border: 0;}
+		</style>
+	</head>
+	<body>
+		<form action="/updateFicha" method="POST" modelAttribute="ficha">
+		
+			ID:
+  			<input type="text" name="id" th:value="${ficha.id}" readOnly="true">
+  			
+  			Tipo Ficha:
+  			<input type="text" name="tipoFicha" th:value="${ficha.tipoFicha}">
+  			
+  			Letra Ficha:
+  			<input type="text" name="fichaLetra" th:value="${ficha.fichaLetra}">
+  			
+  			Aluno:
+    <select name="aluno_id">
+  				<option th:each="aluno : ${alunos}" th:value="${aluno.id}" th:text="${aluno.nome}"></option>
+			</select>
+			
+			
+  			Professor:
+    <select name="professor_id">
+  				<option th:each="professor : ${professores}" th:value="${professor.id}" th:text="${professor.nome}"></option>
+			</select>
+  			
+  			
+  			Item 1:
+    <select name="itemExercicio1_id">
+  				<option th:each="itemFicha : ${itensFicha}" 
+  				th:value="${itemFicha.id}" 
+  				th:text="'Exercício:' + ${itemFicha.exercicio_id} + 
+  				'|Séries:' + ${itemFicha.serie} + 
+  				'|Repetição:' + ${itemFicha.repeticao} + 
+  				'|Descanso:' + ${itemFicha.descanso}"></option>
+			</select> 
+  			
+  			
+  			Item 2:
+   <select name="itemExercicio2_id">
+  				<option th:each="itemFicha : ${itensFicha}" 
+  				th:value="${itemFicha.id}" 
+  				th:text="'Exercício:' + ${itemFicha.exercicio_id} + 
+  				'|Séries:' + ${itemFicha.serie} + 
+  				'|Repetição:' + ${itemFicha.repeticao} + 
+  				'|Descanso:' + ${itemFicha.descanso}"></option>
+			</select> 
+  			
+  			
+			Item 3:
+  			 <select name="itemExercicio3_id">
+  				<option th:each="itemFicha : ${itensFicha}" 
+  				th:value="${itemFicha.id}" 
+  				th:text="'Exercício:' + ${itemFicha.exercicio_id} + 
+  				'|Séries:' + ${itemFicha.serie} + 
+  				'|Repetição:' + ${itemFicha.repeticao} + 
+  				'|Descanso:' + ${itemFicha.descanso}"></option>
+			</select> 
+  			
+  			
+  			Item 4:
+     <select name="itemExercicio4_id">
+  				<option th:each="itemFicha : ${itensFicha}" 
+  				th:value="${itemFicha.id}" 
+  				th:text="'Exercício:' + ${itemFicha.exercicio_id} + 
+  				'|Séries:' + ${itemFicha.serie} + 
+  				'|Repetição:' + ${itemFicha.repeticao} + 
+  				'|Descanso:' + ${itemFicha.descanso}"></option>
+			</select> 
+  			
+  			
+			<div class="options">
+				<input type="submit" value="Atualizar">
+				<input type="button" value="Voltar" onClick="history.go(-1)">
+			</div>  
+		</form>
+		
+	</body>
+</html>

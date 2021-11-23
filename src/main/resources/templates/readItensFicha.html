@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>Itens da Ficha</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <style>
+			body{background-color: #fff8dc;margin: 0;}
+			table{width: 100%;}
+			table, th, td {border: 1px solid black;border-collapse: collapse;text-align: center;}
+			.options {text-align: center; margin: 40px; position: relative;}
+			.options a {padding: 20px;background: deepskyblue;border-radius: 15px;color: #fff;text-decoration: none;font-size: 20px;margin: 10px;}
+		</style>
+	</head>
+	<body>
+		<div class="options">
+			<a href="insertFicha">Voltar para a Ficha</a> 
+		</div>
+	
+		<table>
+			<tr>
+			
+			    <th>ID</td>
+			    <th>Exercício</td>
+			    <th>Descrição</td>
+			    <th>Séries</td>
+			    <th>Repetições</td>
+			    <th>Descanso</td>
+			    <th>Excluir?</td>
+			    <th>Alterar?</td>
+			</tr>
+			<tr th:each="itemFicha : ${itensFicha}">
+				<td th:text="${itemFicha.id}"></td>
+			    <td th:each="exercicio : ${exercicios}"
+      				  th:if="${exercicio.id} == ${itemFicha.exercicio_id}"
+  					  th:text="${exercicio.nome}">
+  				</td >
+			    <td th:text="${itemFicha.descricao}"></td>
+			    <td th:text="${itemFicha.serie}"></td>
+			    <td th:text="${itemFicha.repeticao}"></td>
+			    <td th:text="${itemFicha.descanso}"></td>
+			    
+			    <td><a th:href="@{deleteItemFicha(id=${itemFicha.id})}">Deletar</a></td>
+			    <td><a th:href="@{updateItemFicha(id=${itemFicha.id})}">Alterar</a></td>
+			</tr>
+		</table>
+	</body>
+</html>
