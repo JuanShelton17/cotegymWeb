@@ -111,12 +111,4 @@ public class ProfessorController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView index() {
-
-		ModelAndView mav = new ModelAndView("index");
-
-		return mav;
-	}
-
 }
